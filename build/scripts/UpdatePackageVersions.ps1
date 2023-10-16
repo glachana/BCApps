@@ -56,9 +56,13 @@ foreach($packageName in $packageNames)
 if ($updatesAvailable) {
     # Create branch and push changes
     Set-GitConfig -Actor $Actor
+    $diff = git diff
+    Write-Host "Diff 1 $diff"
     $BranchName = New-TopicBranch -Category "UpdatePackageVersions/$TargetBranch"
     $title = "[$TargetBranch] Update package versions"
     Push-GitBranch -BranchName $BranchName -Files @("build\Packages.json") -CommitMessage $title
+    $diff = git diff
+    Write-Host "Diff 2 $diff"
 
     New-GitHubPullRequest -BranchName $BranchName -TargetBranch $TargetBranch -label "automation"
 } else {
