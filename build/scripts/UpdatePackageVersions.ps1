@@ -29,6 +29,9 @@ $packageNames = ($packageConfig | Get-Member -MemberType NoteProperty).Name
 
 $updatesAvailable = $false
 
+$diff = git diff
+Write-Host "Diff 0 $diff"
+
 foreach($packageName in $packageNames)
 {
     $currentPackage = Get-ConfigValue -Key $packageName -ConfigType Packages
@@ -53,16 +56,16 @@ foreach($packageName in $packageNames)
     }
 }
 
+$diff = git diff
+Write-Host "Diff 1 $diff"
+
 if ($updatesAvailable) {
     # Create branch and push changes
     Set-GitConfig -Actor $Actor
-    $diff = git diff
-    Write-Host "Diff 1 $diff"
     $BranchName = New-TopicBranch -Category "UpdatePackageVersions/$TargetBranch"
     $title = "[$TargetBranch] Update package versions"
     Push-GitBranch -BranchName $BranchName -Files @("build\Packages.json") -CommitMessage $title
     $diff = git diff
-    Write-Host "Diff 2 $diff"
 
     New-GitHubPullRequest -BranchName $BranchName -TargetBranch $TargetBranch -label "automation"
 } else {
