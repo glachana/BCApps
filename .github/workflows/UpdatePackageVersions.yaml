@@ -33,7 +33,6 @@ jobs:
   UpdatePackageVersions:
     name: "[${{ matrix.branch }}] Update Package Versions"
     runs-on: windows-latest
-    environment: Official-Build
     needs: GetBranches
     strategy:
       matrix:
@@ -47,7 +46,6 @@ jobs:
 
       - name: Update Package Versions
         env:
-          GH_TOKEN: ${{ secrets.GHTOKENWORKFLOW }}
           InsiderSASToken: ${{ secrets.INSIDERSASTOKEN }}
         run: |
           build/scripts/UpdatePackageVersions.ps1 -TargetBranch ${{ matrix.branch }} -Actor $env:GITHUB_ACTOR
