@@ -64,7 +64,7 @@ if ($updatesAvailable) {
     Set-GitConfig -Actor $Actor
     $BranchName = New-TopicBranch -Category "UpdatePackageVersions/$TargetBranch"
     $title = "[$TargetBranch] Update package versions"
-    Push-GitBranch -BranchName $BranchName -Files @("build\Packages.json") -CommitMessage $title
+    Push-GitBranch -BranchName $BranchName -Files @("Build/Packages.json") -CommitMessage $title
     $diff = git diff
 
     New-GitHubPullRequest -BranchName $BranchName -TargetBranch $TargetBranch -label "automation"
