@@ -1,7 +1,7 @@
 {
     "type":  "PTE",
-    "templateUrl":  "https://github.com/microsoft/AL-Go-PTE@preview",
-    "bcContainerHelperVersion":  "preview",
+    "templateUrl":  "https://github.com/aholstrup1/AL-Go-Actions@main",
+    "bcContainerHelperVersion":  "https://github.com/aholstrup1/navcontainerhelper/archive/5686ce11784d7648d8d764d6059af3d5ec179a08.zip",
     "runs-on":  "windows-latest",
     "cacheImageName":  "",
     "UsePsSession":  false,
