@@ -215,7 +215,6 @@ jobs:
 
         - name: Publish artifacts - container event log
           uses: actions/upload-artifact@v3
-          if: (failure()) && (hashFiles(format('{0}/ContainerEventLog.evtx',inputs.project)) != '')
           with:
             name: ${{ steps.calculateArtifactsNames.outputs.ContainerEventLogArtifactsName }}
             path: '${{ inputs.project }}/ContainerEventLog.evtx'
