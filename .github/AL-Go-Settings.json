@@ -1,7 +1,7 @@
 {
     "type":  "PTE",
     "templateUrl":  "https://github.com/aholstrup1/AL-Go-Actions@main",
-    "bcContainerHelperVersion":  "https://github.com/aholstrup1/navcontainerhelper/archive/5686ce11784d7648d8d764d6059af3d5ec179a08.zip",
+    "bcContainerHelperVersion":  "https://github.com/aholstrup1/navcontainerhelper/archive/a3d417bc193c5c077c776dc1f1771b6019306023.zip",
     "runs-on":  "windows-latest",
     "cacheImageName":  "",
     "UsePsSession":  false,
