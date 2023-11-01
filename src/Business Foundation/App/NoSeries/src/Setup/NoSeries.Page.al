@@ -238,8 +238,15 @@ page 456 "No. Series"
                 ToolTip = 'Test whether the number series can generate new numbers.';
 
                 trigger OnAction()
+                var
+                    NoSeriesRec: Record "No. Series";
+                    NoSeries: Codeunit "No. Series";
                 begin
-                    Codeunit.Run(Codeunit::"No. Series Check", Rec);
+                    CurrPage.SetSelectionFilter(NoSeriesRec);
+                    if NoSeriesRec.FindSet() then
+                        repeat
+                            NoSeries.PeekNextNo(NoSeriesRec, WorkDate());
+                        until NoSeriesRec.Next() = 0;
                 end;
             }
         }
